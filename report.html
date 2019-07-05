@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- debug mode -->
+        <meta http-equiv="cache-control" content="max-age=0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+        <meta http-equiv="pragma" content="no-cache" />
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+        <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+        <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/b69ec0eae0.css">
+
+        <title>RappoSOAP</title>
+        <style>
+            body {
+                width: 100vw;
+                color: #EBEBEB;
+                line-height: 1.6;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            .center {
+                text-align: center;
+            }
+
+            #textarea-subjective {
+                height: 400px;
+                min-width: calc(100% - 60px);
+                resize: vertical;
+            }
+
+            nav {
+                background-color: #171713;
+                color: white;
+                height: 55px;
+            }
+
+            .left-container {
+                background-color: #1F1F1A !important;
+                width: 70%;
+            }
+
+            .right-container {
+                background-color: #23231D !important;
+                width: 30%;
+            }
+
+            .left-container,
+            .right-container {
+                padding: 10px;
+                height: 100%;
+                overflow-y: auto;
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: column;
+            }
+
+            .full-row {
+                height: calc(100vh - 55px);
+                width: 100vw;
+                padding: 0;
+                margin: 0;
+            }
+
+            h1 {
+                margin-bottom: 0;
+            }
+
+            .card {
+                background-color:  rgb(49, 49, 49);
+                border-left: 2px solid #4fd2ff;
+                color: #EBEBEB;
+                padding-left: 5px;
+                margin-top: 15px;
+                word-wrap: break-word;
+            }
+
+            h2 {
+                margin: 0;
+            }
+
+            h4 {
+                font-size: 18px;
+                margin: 0;
+                font-weight: 800;
+            }
+
+            h3 {
+                font-size: 15px;
+                margin: 0;
+                margin-top: 15px;
+                font-weight: 700;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .button {
+                background-color: #4fd2ff !important;
+                border-color: #4fd2ff !important;
+            }
+
+            .button-outline {
+                background-color: transparent !important;
+                border-color: #4fd2ff !important;
+                color: #4fd2ff !important;
+            }
+
+            textarea {
+                padding: 15px;
+                background-color: #282821 !important;
+                border-color: transparent !important;
+                color: white !important;
+            }
+
+            textarea::placeholder {
+                color: lightgray !important;
+            }
+
+            i {
+                font-family: fontawesome !important;
+                font-style: normal !important;
+            }
+
+            .claim {
+                background-color: #4fd2ff;
+                color: #204661 !important;
+                padding: 15px;
+                border-radius: 3px;
+                display: none;
+            }
+
+            .flex-display {
+                height: 100%;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+            }
+
+            .column:not(.center) {
+                padding-left: 30px !important;
+                padding-right: 30px !important;
+            }
+
+            .person {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                display: inline-block;
+            }
+
+            .person-name {
+                font-size: 18px;
+                padding-top: 41px;
+                width: 200px;
+                padding-bottom: 41px;
+                display: inline-block;
+            }
+
+            .flex-space {
+                margin-top: 15px;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+                width: 100%;
+            }
+
+            .navbar ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            .navbar li {
+                float: left;
+                margin-bottom: 0;
+            }
+
+            .navbar li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+            .navbar li a:hover {
+                background-color: #4fd3ffa6;
+            }
+
+            .navbar li:first-child a:hover {
+                background-color: rgba(156, 21, 21, 0.849);
+            }
+
+            .navbar li:last-child a:hover {
+                background-color: rgba(172, 255, 47, 0.664);
+            }
+
+            .active {
+                background-color: #4fd2ff;
+            }
+
+            .hot-text {
+                color: #4fd2ff;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <i class="fas fa-"></i>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a class="active">Report</a></li>
+                <li><a href="/measurement.html">Measurement</a></li>
+                <li><a href="">Complete</a></li>
+            </ul>
+        </nav>
+
+        <div class="row full-row">
+            <div class="col left-container">
+                <div class="contaner">
+                    <div class="row">
+                        <div class="column">
+                            <h2>Reporting</h2>
+                            <p>
+                                Click on the textfield and start typing your SOAP note.
+                                <br>
+                                Don't forget to switch the step when you are done writing a section.
+                                <br>
+                                <h3>Subjective</h3>
+                                It describes the patients’ current condition and why they came to visit. In addition, it includes a brief synapse of the following: Encounter of injury, how long it has continued since the encounter, essence of pain (how it feels and how sever the pain is), any additional evidence, and any other therapy or treatments the client has received already.
+                                <br>
+                                <h3>Objective</h3>
+                                This area shows the patients status and facts ie: vital signs, examination results, lab results, patients measurements and age.
+                                <br>
+                                <h3>Assessment</h3>
+                                A brief statement of medical diagnose for a patients medical visit on the same day the SOAP Note is written.
+                                <br>
+                                <h3>Plan</h3>
+                                This area shows what is going to happen from this point forward with a patient;,ie medications prescribed, labs ordered, referrals..etc..
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <textarea id="textarea-soap" cols="30" rows="10" placeholder="Click here and start typing..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="container flex-display">
+                    <div class="row">
+                        <div class="column">
+                            <p class="claim">
+                                infromation about the button.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row selectors">
+                        <div class="column center">
+                            <button id="button-s" class="button">S</button>
+                        </div>
+                        <div class="column center">
+                            <button id="button-o" class="button button-outline">O</button>
+                        </div>
+                        <div class="column center">
+                            <button id="button-a" class="button button-outline">A</button>
+                        </div>
+                        <div class="column center">
+                            <button id="button-p" class="button button-outline">P</button>
+                        </div>
+                        <div class="column center">
+                            <button id="button-e" class="button button-outline">DONE!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col right-container">
+                <div class="container">
+                    <div class="row">
+                        <div class="column">
+                            <div class="flex-space">
+                                <img class="person" src="https://randomuser.me/api/portraits/men/65.jpg" />
+                                <span class="person-name">Peter van Holster</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <div id="result-soap"></div>
+                        </div>
+                    </div>
+
+                   
+                    <!-- <div class="row">
+                        <blockquote id="info" class="hidden">
+                            - Subjectief. Wat zegt de cliënt of zijn/haar eigen belevingen. <br>
+                            - Objectief. Het gedrag van de cliënt zoals jij dit observeert. <br>
+                            - Analyse. Wat concludeer je uit het subjectieve en objectieve, zit er verschil in? <br>
+                            - Plan. Hoe moet het op basis van de analyse verder.
+                        </blockquote>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <script type="module">
+            import { Main } from './js/bin/main.js';
+            const main = new Main();
+        </script>
+    </body>
+</html>
